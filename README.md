@@ -1,5 +1,5 @@
 # ansible-logstash
-Installs elasticsearch 2.0
+Installs logstash 2.0
 
 ## Example Playbook
 
