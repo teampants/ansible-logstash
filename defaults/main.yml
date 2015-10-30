@@ -1,0 +1,13 @@
+---
+logstash_output_debug:
+  enable: false
+  load_order: 99
+  path: "/var/log/logstash/debug.out"
+logstash_output_elasticsearch:
+  enable: true
+  load_order: 50
+  hosts: [ "localhost" ]
+logstash_input_syslog:
+  enable: true
+  load_order: 20
+  path: "/var/log/syslog"
