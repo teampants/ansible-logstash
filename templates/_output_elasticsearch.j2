@@ -1,5 +1,6 @@
 output {
   elasticsearch {
     hosts => {{ logstash_output_elasticsearch.hosts }}
+    path => '{{ logstash_output_elasticsearch.path }}'
   }
 }

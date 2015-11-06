@@ -7,6 +7,7 @@ logstash_output_elasticsearch:
   enable: true
   load_order: 50
   hosts: [ "localhost" ]
+  path: "/"
 logstash_input_syslog:
   enable: true
   load_order: 20
