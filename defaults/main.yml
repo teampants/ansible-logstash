@@ -8,6 +8,8 @@ logstash_output_elasticsearch:
   load_order: 50
   hosts: [ "localhost" ]
   path: "/"
+  ssl: "false"
+  ssl_verify_certificate: "true"
 logstash_input_syslog:
   enable: true
   load_order: 20
