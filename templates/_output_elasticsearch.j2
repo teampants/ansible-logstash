@@ -7,8 +7,14 @@ output {
     {% if logstash_output_elasticsearch.trust_store_file is defined %}
       truststore => '{{ logstash_output_elasticsearch.trust_store_file }}'
     {% endif %}
+    {% if logstash_output_elasticsearch.trust_store_password is defined %}
+      truststore_password => '{{ logstash_output_elasticsearch.trust_store_password }}'
+    {% endif %}
     {% if logstash_output_elasticsearch.key_store_file is defined %}
       keystore => '{{ logstash_output_elasticsearch.key_store_file }}'
+    {% endif %}
+    {% if logstash_output_elasticsearch.key_store_password is defined %}
+      keystore_password => '{{ logstash_output_elasticsearch.key_store_password }}'
     {% endif %}
   }
 }
