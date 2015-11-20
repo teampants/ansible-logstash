@@ -1,4 +1,5 @@
 ---
+logstash_subindexes_by_type: true
 logstash_output_debug:
   enable: false
   load_order: 99

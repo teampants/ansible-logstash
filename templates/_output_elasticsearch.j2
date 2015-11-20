@@ -16,5 +16,10 @@ output {
     {% if logstash_output_elasticsearch.key_store_password is defined %}
       keystore_password => '{{ logstash_output_elasticsearch.key_store_password }}'
     {% endif %}
+    {% if logstash_subindexes_by_type %}
+      index => "logstash-%{type}-%{+YYYY.MM.dd}"
+    {% else %}
+      index => "logstash-%{+YYYY.MM.dd}"
+    {% endif %}
   }
 }
