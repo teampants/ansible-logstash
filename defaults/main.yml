@@ -15,3 +15,7 @@ logstash_input_syslog:
   enable: true
   load_order: 20
   path: "/var/log/syslog"
+logstash_input_beats:
+  enable: true
+  load_order: 21
+  port: "5044"
