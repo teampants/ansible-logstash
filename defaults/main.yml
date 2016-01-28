@@ -1,0 +1,21 @@
+---
+logstash_subindexes_by_type: true
+logstash_output_debug:
+  enable: false
+  load_order: 99
+  path: "/var/log/logstash/debug.out"
+logstash_output_elasticsearch:
+  enable: true
+  load_order: 50
+  hosts: [ "localhost" ]
+  path: "/"
+  ssl: "false"
+  ssl_verify_certificate: "true"
+logstash_input_syslog:
+  enable: true
+  load_order: 20
+  path: "/var/log/syslog"
+logstash_input_beats:
+  enable: true
+  load_order: 21
+  port: "5044"

@@ -1,0 +1,24 @@
+---
+- name: Add elastic's public signing key
+  apt_key:
+    url: 'https://packages.elasticsearch.org/GPG-KEY-elasticsearch'
+    state: present
+
+- name: Add logstash 2.0 repository
+  apt_repository:
+    repo: 'deb http://packages.elasticsearch.org/logstash/2.0/debian stable main'
+    state: present
+    update_cache: yes
+
+- name: Install logstash 2.0
+  apt:
+    package: logstash
+    state: present
+
+- name: Add logstash user to adm group
+  user:
+    name: logstash
+    group: logstash
+    groups: adm
+  when: logstash_input_syslog.enable
+  notify: restart logstash

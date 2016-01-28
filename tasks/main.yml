@@ -1,0 +1,49 @@
+---
+- include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Enable logstash at boot
+  service:
+    name: logstash
+    enabled: yes
+
+- name: Enable debug output
+  template:
+    src: "_output_debug.j2"
+    dest: "/etc/logstash/conf.d/{{ logstash_output_debug.load_order }}_output_debug.conf"
+    owner: root
+    group: root
+    mode: 0644
+  when: logstash_output_debug.enable
+  notify: restart logstash
+
+- name: Enable elasticsearch output
+  template:
+    src: "_output_elasticsearch.j2"
+    dest: "/etc/logstash/conf.d/{{ logstash_output_elasticsearch.load_order }}_output_elasticsearch.conf"
+    owner: root
+    group: root
+    mode: 0644
+  when: logstash_output_elasticsearch.enable
+  notify: restart logstash
+
+- name: Enable beats input
+  template:
+    src: "_input_beats.j2"
+    dest: "/etc/logstash/conf.d/{{ logstash_input_beats.load_order }}_input_beats.conf"
+    owner: root
+    group: root
+    mode: 0644
+  when: logstash_input_beats.enable
+  notify: restart logstash
+
+- name: Enable syslog input and filter
+  template:
+    src: "_input_syslog.j2"
+    dest: "/etc/logstash/conf.d/{{ logstash_input_syslog.load_order }}_input_syslog.conf"
+    owner: root
+    group: root
+    mode: 0644
+  when: logstash_input_syslog.enable
+  notify: restart logstash
+
