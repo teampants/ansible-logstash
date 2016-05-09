@@ -4,6 +4,9 @@ output {
     path => '{{ logstash_output_elasticsearch.path }}'
     ssl => {{ logstash_output_elasticsearch.ssl }}
     ssl_certificate_verification => {{ logstash_output_elasticsearch.ssl_verify_certificate }}
+    {% if logstash_output_elasticsearch.proxy is defined %}
+      proxy => '{{ logstash_output_elasticsearch.proxy }}'
+    {% endif %}
     {% if logstash_output_elasticsearch.trust_store_file is defined %}
       truststore => '{{ logstash_output_elasticsearch.trust_store_file }}'
     {% endif %}
