@@ -3,18 +3,24 @@
   apt_key:
     url: 'https://packages.elasticsearch.org/GPG-KEY-elasticsearch'
     state: present
+  tags:
+    - apt
 
 - name: Add logstash 2.0 repository
   apt_repository:
     repo: 'deb http://packages.elasticsearch.org/logstash/2.0/debian stable main'
     state: present
     update_cache: yes
+  tags:
+    - apt
 
 - name: Install logstash 2.0
   apt:
     package: logstash
     state: present
-
+  tags:
+    - apt
+    
 - name: Add logstash user to adm group
   user:
     name: logstash
