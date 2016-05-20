@@ -47,3 +47,9 @@
   when: logstash_input_syslog.enable
   notify: restart logstash
 
+- name: Patch logstash 2.3 init script
+  patch:
+    src: init.d/logstash.patch
+    dest: /etc/init.d/logstash
+  when: logstash_version_major_minor == '2.3'
+  notify: restart logstash

@@ -6,15 +6,15 @@
   tags:
     - apt
 
-- name: Add logstash 2.0 repository
+- name: Add logstash repository
   apt_repository:
-    repo: 'deb http://packages.elasticsearch.org/logstash/2.0/debian stable main'
+    repo: "deb http://packages.elasticsearch.org/logstash/{{ logstash_version_major_minor }}/debian stable main"
     state: present
     update_cache: yes
   tags:
     - apt
 
-- name: Install logstash 2.0
+- name: Install logstash
   apt:
     package: logstash
     state: present
