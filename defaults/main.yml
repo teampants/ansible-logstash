@@ -19,3 +19,4 @@ logstash_input_beats:
   enable: true
   load_order: 21
   port: "5044"
+logstash_version_major_minor: "2.3"
