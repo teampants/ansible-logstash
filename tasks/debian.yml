@@ -14,13 +14,16 @@
   tags:
     - apt
 
-- name: Install logstash
+- name: Install logstash and patch
   apt:
-    package: logstash
+    package: "{{ item }}"
     state: present
+  with_items:
+    - logstash
+    - patch
   tags:
     - apt
-    
+
 - name: Add logstash user to adm group
   user:
     name: logstash
