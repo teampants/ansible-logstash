@@ -16,7 +16,7 @@
 
 - name: Install logstash and patch
   apt:
-    package: "{{ item }}"
+    name: "{{ item }}"
     state: present
   with_items:
     - logstash
