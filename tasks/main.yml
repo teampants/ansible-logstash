@@ -53,3 +53,11 @@
     dest: /etc/init.d/logstash
   when: logstash_version_major_minor == '2.3'
   notify: restart logstash
+
+- name: Set KILL_ON_STOP_TIMEOUT in /etc/default/logstash
+  lineinfile:
+    dest: /etc/default/logstash
+    line: "KILL_ON_STOP_TIMEOUT={% if logstash_kill_on_stop_timeout %}1{% else %}0{% endif %}"
+    regexp: "^#?KILL_ON_STOP_TIMEOUT=.*"
+    state: present
+  notify: restart logstash

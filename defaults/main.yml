@@ -1,4 +1,5 @@
 ---
+logstash_kill_on_stop_timeout: false
 logstash_subindexes_by_type: true
 logstash_output_debug:
   enable: false
