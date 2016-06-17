@@ -52,6 +52,7 @@
     src: init.d/logstash.patch
     dest: /etc/init.d/logstash
   when: logstash_version_major_minor == '2.3'
+  failed_when: False
   notify: restart logstash
 
 - name: Set KILL_ON_STOP_TIMEOUT in /etc/default/logstash
